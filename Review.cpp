@@ -9,8 +9,9 @@ template <typename Matrix>
         const int p = row/2;
         const int q = row/2;
         //select the submatrix of size p*q with left upper entry at position 0,p
+        Eigen::MatrixXd A(p,q);
         
-        M.block<p,q>(0,p) = MatrixXd::Identity(p,q);
-        std::cout << M <<;
+        M.block<p,q>(0,p) = I;
+        std::cout << M <<
     }
     }
