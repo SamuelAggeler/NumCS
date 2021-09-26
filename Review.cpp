@@ -1,4 +1,11 @@
 #include "eigen/Eigen/Dense"
+#include <iostream>
+
+
+int main(int argc, char const *argv[])
+{
+    std::cout << "test\n";
+}
 
 template <typename Matrix>
     void replaceWithId(Eigen::DenseBase<Matrix> &M){
@@ -11,7 +18,7 @@ template <typename Matrix>
         //select the submatrix of size p*q with left upper entry at position 0,p
         Eigen::MatrixXd A(p,q);
         
-        M.block<p,q>(0,p) = I;
-        std::cout << M <<
+        M.block<p,q>(0,p) = Eigen::MatrixXd::Identity(p,q);
+        
     }
     }
