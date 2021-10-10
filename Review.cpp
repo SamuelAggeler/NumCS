@@ -1,4 +1,11 @@
 #include "eigen/Eigen/Dense"
+#include <iostream>
+
+
+int main(int argc, char const *argv[])
+{
+    std::cout << "test\n";
+}
 
 template <typename Matrix>
     void replaceWithId(Eigen::DenseBase<Matrix> &M){
