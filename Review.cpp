@@ -2,16 +2,8 @@
 
 template <typename Matrix>
     void replaceWithId(Eigen::DenseBase<Matrix> &M){
-    const int row = M.rows();
-    const int col = M.cols();
-
-    if(row == col && row %2 == 0) {
-        const int p = row/2;
-        const int q = row/2;
-        //select the submatrix of size p*q with left upper entry at position 0,p
-        Eigen::MatrixXd A(p,q);
-        
-        M.block<p,q>(0,p) = I;
-        std::cout << M <<
+    int n = M.cols();
+    assert (n == M.rows() && n % 2 == 0);
+    M.block(0,n/2,n/2,n/2) = Eigen::MatrixXd::Identity(n/2,n/2);
     }
-    }
+             
