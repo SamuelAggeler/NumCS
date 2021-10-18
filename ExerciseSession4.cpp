@@ -22,7 +22,7 @@ Eigen::VectorXd x = lhs.lu().solve(rhs);
 //HouseHolderQR / FullPivHousholderQR / ColPivHousholderQR difference numeric stable vs speed
 //generally doesn't matter which one we choose.
 
-//shape Identification
+//shape Identification 
 
 
 
