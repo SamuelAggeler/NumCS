@@ -12,4 +12,5 @@ int main(int argc, char const *argv[]) {
     std::cout << "Permuted column vector v = " << v.transpose() << std::endl;
 
     return 0;
+
 }
