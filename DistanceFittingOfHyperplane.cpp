@@ -9,9 +9,9 @@ std::pair<Eigen::VectorXd, Eigen::VectorXd> hyperlsq( const Eigen::MatrixXd& A, 
         throw std::runtime_error("not enough equations");
     }
     m = std::min(m,p);
-    Eigen::MatrixXd R = A.householderQr().matrixQR().template triangularView<Eigen::Upper>();
-    Eigen::MatrixXd V = R.block(p - dim, p - dim, m + dim - p, dim).jacobiSvd(Eigen::ComputeFullV).matrixV();
-    Eigen::VectorXd n = V.col(dim-1);
+    Eigen::MatrixXd R = A.householderQr().matrixQR().template triangularView<Eigen::Upper>(); // use QR-decomposition to obtain R Matrix
+    Eigen::MatrixXd V = R.block(p - dim, p - dim, m + dim - p, dim).jacobiSvd(Eigen::ComputeFullV).matrixV(); // obtain A tilde in the sketch (everything thats dependant on n) and compute SVD
+    Eigen::VectorXd n = V.col(dim-1); //solution is the right most column of V
     const auto R_topleft = R.topLeftCorner(p - dim, p - dim);
     const auto R_diag = R_topleft.diagonal().cwiseAbs();
     if (R_diag.minCoeff() < (std::numeric_limits<double>::epsilon()) * R_diag.maxCoeff())
